@@ -17,3 +17,6 @@ services:
         value: "12"
       - key: ALLOWED_TELEGRAM_USER_IDS
         sync: false
+bot.py
+requirements.txt
+runtime.txt
