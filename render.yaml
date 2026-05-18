@@ -1,8 +1,19 @@
-bot.py
-requirements.txt
-render.yaml
-runtime.txt
-.env.example
-.gitignore
-Dockerfile
-Procfile
+services:
+  - type: worker
+    name: telegram-ai-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5.4-mini
+      - key: SYSTEM_PROMPT
+        value: You are a helpful AI assistant inside Telegram. Reply clearly and concisely.
+      - key: MAX_HISTORY_MESSAGES
+        value: "12"
+      - key: ALLOWED_TELEGRAM_USER_IDS
+        sync: false
